@@ -1,10 +1,16 @@
-import { initRESTful } from "./RestApi";
-import { initEnvFile } from "./RestApi/env";
+
+import { initEnvFile } from "./RestApi/env.js";
+
+import * as dotenv from 'dotenv'
 
 
 export async function init() {
-    return initEnvFile();
+    console.log('RestApi init()')
+
+    dotenv.config()
+
+    await initEnvFile();
 
     // await initRESTful();
-
 }
+

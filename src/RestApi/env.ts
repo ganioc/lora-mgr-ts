@@ -1,40 +1,42 @@
 import * as path from 'path'
 import { Low, JSONFile } from 'lowdb'
 import { strict as assert } from "assert"
-import { axiosPost } from '../http/axios'
+import { axiosPost } from '../http/index.js'
 
 export type Config = {
     jwt: string;
     urlBase: string;
 }
 
-let objConfig: Config = {
-    jwt: '',
-    urlBase: ''
-}
+const file = path.join('config', 'config.json')
+const adapter = new JSONFile<Config>(file)
 
+// dbEnv is a globally shared file handle
+let dbEnv = new Low<Config>(adapter)
+
+export function getDbEnv() {
+    return dbEnv
+}
 
 export async function getJwt() {
 
     if (!isValidJwt()) {
         console.log('to update jwt token')
-        let result = await axiosPost(getUrlBase() + 'api/internal/login', {
+        let result = await axiosPost(dbEnv.data!.urlBase + 'api/internal/login', {
             email: process.env.EMAIL,
             password: process.env.PASSWORD
         })
         console.log(result);
-        updateConfigJwt("")
+
     }
 
-    return objConfig.jwt;
+    return dbEnv.data!.jwt;
 }
-export function getUrlBase() {
-    return objConfig.urlBase
-}
+
 export function isValidJwt(): boolean {
 
     try {
-        let obj = parseJwt(objConfig.jwt)
+        let obj = parseJwt(dbEnv.data!.jwt)
         return isValidJwtExp(obj.exp)
     } catch (e) {
         console.log(e)
@@ -59,44 +61,13 @@ export function isValidJwtExp(date: number): boolean {
     return (due - now) >= 60000
 }
 
-export function updateConfigJwt(jwt: string) {
-    console.log('update jwt:', jwt)
-    objConfig.jwt = jwt;
-}
-export function updateConfigUrlbase(url: string) {
-    console.log('update urlbase:', url)
-    objConfig.urlBase = url;
-}
-export function getConfig() {
-    return objConfig
-}
-
-export async function getEnvDb() {
-    const file = path.join(__dirname, 'config/config.json')
-
-    const adapter = new JSONFile<Config>(file)
-
-    const db = new Low<Config>(adapter)
-
-    await db.read();
-
-    return db;
-}
-
 export async function initEnvFile() {
     console.log('\ninit env local file')
     assert(process.env.protocol, 'env protocol undefined')
     assert(process.env.HOST, 'env HOST undefined')
     assert(process.env.PORT, 'env PORT undefined')
 
-    const db = await getEnvDb();
-
-    if (!db.data) {
-        db.data = {
-            jwt: '',
-            urlBase: ''
-        }
-    }
+    await dbEnv.read();
 
     const urlStr = process.env.protocol
         + '://'
@@ -104,13 +75,14 @@ export async function initEnvFile() {
         + process.env.PORT + '/'
     console.log('url base:', urlStr)
 
-    updateConfigJwt(db.data.jwt)
-    updateConfigUrlbase(urlStr);
-
-    if (urlStr !== db.data.urlBase) {
-        db.data.urlBase = urlStr
-        await db.write()
-        console.log('db saved.')
+    if (!dbEnv.data || urlStr !== dbEnv.data.urlBase) {
+        dbEnv.data = {
+            jwt: '',
+            urlBase: urlStr
+        }
+        await dbEnv.write()
+        console.log('dbEnv saved.')
+        console.log(dbEnv.data)
     }
 
 }

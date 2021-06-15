@@ -1,4 +1,4 @@
 {
-  "jwt": "who",
-  "urlBase": "http://localhost"
+  "jwt": "",
+  "urlBase": "http://192.168.90.45:8080/"
 }

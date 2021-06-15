@@ -1,5 +1,4 @@
-import { init } from "../src";
-
+import { init } from "../src/index.js";
 
 async function test() {
     console.log('test ...')

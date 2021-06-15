@@ -1,15 +1,8 @@
 import { strict as assert } from "assert"
-import { axiosGet, axiosPost } from "../http/axios"
-import { getEnvDb, getJwt } from "./env";
-// import { ENV } from './env'
-// import { decode as atob } from 'atob'
-const atob = require('atob')
+import { getJwt } from "./env"
 
-const result = require('dotenv').config()
-
-
-
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 
 export async function initRESTful() {
@@ -22,15 +15,5 @@ export async function initRESTful() {
 
     let jwtStr = await getJwt();
     console.log('jwtStr:', jwtStr)
-    // if (!isValidJwt()) {
-    //     let result = await axiosPost(db.data!.urlBase + 'api/internal/login', {
-    //         email: process.env.EMAIL,
-    //         password: process.env.PASSWORD
-    //     })
-
-    //     console.log('result:', result)
-    //     console.log('update jwt')
-    // }
-
 
 }
