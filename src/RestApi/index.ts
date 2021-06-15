@@ -1,8 +1,36 @@
 import { strict as assert } from "assert"
-import { getJwt } from "./env"
+import { getJwt, getDbEnv } from "./env"
 
-import * as dotenv from 'dotenv'
-dotenv.config()
+// import * as dotenv from 'dotenv'
+// dotenv.config()
+
+export async function initEnvFile() {
+    console.log('\ninit env local file')
+    assert(process.env.protocol, 'env protocol undefined')
+    assert(process.env.HOST, 'env HOST undefined')
+    assert(process.env.PORT, 'env PORT undefined')
+
+    const dbEnv = getDbEnv();
+    await dbEnv.read();
+
+    const urlStr = process.env.protocol
+        + '://'
+        + process.env.HOST + ':'
+        + process.env.PORT + '/'
+    console.log('url base:', urlStr)
+
+    if (!dbEnv.data || urlStr !== dbEnv.data.urlBase) {
+        dbEnv.data = {
+            jwt: '',
+            urlBase: urlStr
+        }
+        await dbEnv.write()
+        console.log('dbEnv saved.')
+        console.log(dbEnv.data)
+    }
+
+}
+
 
 
 export async function initRESTful() {
@@ -15,5 +43,7 @@ export async function initRESTful() {
 
     let jwtStr = await getJwt();
     console.log('jwtStr:', jwtStr)
+
+    // if jwtStr not valid, re do it after delay
 
 }
