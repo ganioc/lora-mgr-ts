@@ -1,4 +1,4 @@
-
+const result = require('dotenv').config()
 
 console.log("index.ts")
 

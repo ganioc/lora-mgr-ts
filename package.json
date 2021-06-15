@@ -12,6 +12,8 @@
   "dependencies": {
     "@chirpstack/chirpstack-api": "^3.9.11",
     "@types/node": "^15.12.2",
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "typescript": "^4.3.2"
   },
   "devDependencies": {
