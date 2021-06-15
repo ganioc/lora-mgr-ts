@@ -1,6 +1,10 @@
 import { initRESTful } from "./RestApi";
+import { initEnvFile } from "./RestApi/env";
 
 
 export async function init() {
-    await initRESTful();
+    return initEnvFile();
+
+    // await initRESTful();
+
 }

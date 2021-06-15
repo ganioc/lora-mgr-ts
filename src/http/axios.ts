@@ -1,16 +1,19 @@
 import axios from 'axios'
-import { ENV } from '../RestApi/env'
+import { getEnvDb } from '../RestApi/env'
+// import { ENV } from '../RestApi/env'
 
 axios.defaults.timeout = 10000
 
 export const axiosPost = async function (url: string, data: any): Promise<any> {
     try {
-        let result = await axios.post(url, data, {
-            headers: {
-                "Grpc-Metadata-Authorization": 'Bearer ' + ENV.jwt,
-                "verify": false
-            }
-        })
+        let db = await getEnvDb();
+        let result = await axios.post
+            (url, data, {
+                headers: {
+                    "Grpc-Metadata-Authorization": 'Bearer ' + db.data!.jwt,
+                    "verify": false
+                }
+            })
         return result.data
     } catch (e) {
         console.log("Data:", e.response.data)
@@ -27,9 +30,10 @@ export const axiosGet = async function (url: string): Promise<any> {
 
     try {
         console.log('Get Url:', url)
+        let db = await getEnvDb();
         let result = await axios.get(url, {
             headers: {
-                "Grpc-Metadata-Authorization": 'Bearer ' + ENV.jwt,
+                "Grpc-Metadata-Authorization": 'Bearer ' + db.data!.jwt,
                 "verify": false
             }
         })
