@@ -8,7 +8,7 @@ import * as internalService from '@chirpstack/chirpstack-api/as/external/api/int
 import * as internalMessages from '@chirpstack/chirpstack-api/as/external/api/internal_pb';
 import * as deviceMessages from '@chirpstack/chirpstack-api/as/external/api/device_pb';
 import * as deviceService from '@chirpstack/chirpstack-api/as/external/api/device_grpc_pb';
-import { getJwt } from "../src/RestApi/getJwt";
+// import { getJwt } from "../src/RestApi/getJwt";
 
 
 
@@ -35,11 +35,13 @@ async function main() {
     //         metadata.set('authorization', response!.getJwt())
     //         console.log('jwt:', response!.getJwt())
     //     })
-    const url = 'http://' + process.env.HOST + ':' + process.env.PORT + '/api/internal/login'
-    console.log('url:', url)
-    console.log('email:', process.env.EMAIL)
-    console.log('password:', process.env.PASSWORD)
-    const jwt = await getJwt(url, process.env.EMAIL!, process.env.PASSWORD!);
-    console.log(jwt)
+
+
+    // const url = 'http://' + process.env.HOST + ':' + process.env.PORT + '/api/internal/login'
+    // console.log('url:', url)
+    // console.log('email:', process.env.EMAIL)
+    // console.log('password:', process.env.PASSWORD)
+    // const jwt = await getJwt(url, process.env.EMAIL!, process.env.PASSWORD!);
+    // console.log(jwt)
 }
 main();

@@ -22,3 +22,12 @@ Config Parameters
    - device status
    - device communication
    - gateway status
+
+## Config File
+
+Save jwt to config.json, so we don't have to query token everytime.
+
+```
+config/config.json
+
+```

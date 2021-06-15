@@ -12,11 +12,13 @@
   "dependencies": {
     "@chirpstack/chirpstack-api": "^3.9.11",
     "@types/node": "^15.12.2",
+    "atob": "^2.1.2",
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "typescript": "^4.3.2"
   },
   "devDependencies": {
+    "@types/atob": "^2.1.2",
     "chai": "^4.3.4",
     "mocha": "^9.0.0"
   }
