@@ -1,8 +1,9 @@
 
-import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetGateway, IfSetGatewayProfile, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
-import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile, getGateways, setGateway } from '../../src/index.js'
+import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetDeviceProfile, IfSetGateway, IfSetGatewayProfile, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
+import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile, getGateways, setGateway, getDeviceProfiles, setDeviceProfile } from '../../src/index.js'
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
+
 
 
 describe('Test all', async () => {
@@ -57,8 +58,7 @@ describe('Test all', async () => {
         it('getOrganizations', async () => {
             let result = await getOrganizations(0, 10)
             let organizations = result as IfOrganizations;
-            // console.log(organizations)
-            // expect(organizations.totalCount).equal('3')
+
             let org = organizations.result.filter((item: IfOrganization) => {
                 return item.name === 'organization-9901'
             })
@@ -197,5 +197,50 @@ describe('Test all', async () => {
         //     expect(1).to.equal(1)
         // })
 
+        // it('setDeviceProfile', async () => {
+        //     const profile: IfSetDeviceProfile = {
+        //         adrAlgorithmID: 'default',
+        //         classBTimeout: 0,
+        //         classCTimeout: 0,
+        //         factoryPresetFreqs: [],
+        //         geolocBufferTTL: 0,
+        //         geolocMinBufferSize: 0,
+        //         id: "",
+        //         macVersion: "1.0.0",
+        //         maxDutyCycle: 0,
+        //         maxEIRP: 0,
+        //         name: "dummydev2",
+        //         networkServerID: "1",
+        //         organizationID: "3",
+        //         payloadCodec: "",
+        //         payloadDecoderScript: "",
+        //         payloadEncoderScript: "",
+        //         pingSlotDR: 0,
+        //         pingSlotFreq: 0,
+        //         pingSlotPeriod: 0,
+        //         regParamsRevision: "A",
+        //         rfRegion: "",
+        //         rxDROffset1: 0,
+        //         rxDataRate2: 0,
+        //         rxDelay1: 0,
+        //         rxFreq2: 0,
+        //         supports32BitFCnt: true,
+        //         supportsClassB: false,
+        //         supportsClassC: false,
+        //         supportsJoin: true,
+        //         tags: {},
+        //         uplinkInterval: "60s"
+        //     }
+        //     let result = await setDeviceProfile(profile)
+        //     console.log(result)
+
+        //     expect(1).to.equal(1)
+        // })
+
+        it('getDeviceProfiles', async () => {
+            let result = await getDeviceProfiles(0, 10);
+            console.log(result);
+            expect(1).to.equal(1)
+        })
     })
 });

@@ -152,7 +152,7 @@ export interface IfSetGateway {
     description: string,
     discoveryEnabled: boolean,
     gatewayProfileID: string,
-    id: string,
+    id: string, // Must be 8 bytes 
     location: {
         accuracy: number,
         altitude: number,
@@ -167,4 +167,42 @@ export interface IfSetGateway {
     serviceProfileID: string,
     tags: {}
 }
+type AdrAlgorithm = 'default' | ''
+type MacVersion = "1.0.0" | "1.0.1"
+type RegParamRevision = 'A' | 'B' | 'C'
+type UpLinkInterval = '60s' | '120s'
+export interface IfSetDeviceProfile {
 
+    adrAlgorithmID: AdrAlgorithm,
+    classBTimeout: number,
+    classCTimeout: number,
+    factoryPresetFreqs: number[],
+    geolocBufferTTL: number,
+    geolocMinBufferSize: number,
+    id: string,
+    macVersion: MacVersion,
+    maxDutyCycle: number,
+    maxEIRP: number,
+    name: string,
+    networkServerID: string,
+    organizationID: string,
+    payloadCodec: string,
+    payloadDecoderScript: string,
+    payloadEncoderScript: string,
+    pingSlotDR: number,
+    pingSlotFreq: number,
+    pingSlotPeriod: number,
+    regParamsRevision: RegParamRevision,
+    rfRegion: string,
+    rxDROffset1: number,
+    rxDataRate2: number,
+    rxDelay1: number,
+    rxFreq2: number,
+    supports32BitFCnt: boolean,
+    supportsClassB: boolean,
+    supportsClassC: boolean,
+    supportsJoin: boolean,
+    tags: {},
+    uplinkInterval: UpLinkInterval
+
+}

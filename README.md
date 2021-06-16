@@ -45,7 +45,7 @@ config/config.json
 - [x] add a service,
 - [x] add a gateway,gateway profile
 - [x] add an application,
-- [ ] add a device
+- [ ] add a device profile, device
 
 1. getApplications
 
@@ -413,5 +413,72 @@ Should be a server we can connect ,otherwise...
 // pass
 {}
 
+
+```
+
+- setDeviceProfile
+
+```javascript
+
+{
+    "adrAlgorithmID": "string",
+    "classBTimeout": 0,
+    "classCTimeout": 0,
+    "factoryPresetFreqs": [
+      0
+    ],
+    "geolocBufferTTL": 0,
+    "geolocMinBufferSize": 0,
+    "id": "string",
+    "macVersion": "string",
+    "maxDutyCycle": 0,
+    "maxEIRP": 0,
+    "name": "string",
+    "networkServerID": "string",
+    "organizationID": "string",
+    "payloadCodec": "string",
+    "payloadDecoderScript": "string",
+    "payloadEncoderScript": "string",
+    "pingSlotDR": 0,
+    "pingSlotFreq": 0,
+    "pingSlotPeriod": 0,
+    "regParamsRevision": "string",
+    "rfRegion": "string",
+    "rxDROffset1": 0,
+    "rxDataRate2": 0,
+    "rxDelay1": 0,
+    "rxFreq2": 0,
+    "supports32BitFCnt": true,
+    "supportsClassB": true,
+    "supportsClassC": true,
+    "supportsJoin": true,
+    "tags": {},
+    "uplinkInterval": "string"
+  }
+
+
+{"deviceProfile":
+
+{
+   "name":"dummydev1",
+   "networkServerID":"1",
+   "macVersion":"1.0.0",
+   "regParamsRevision":"A",
+   "adrAlgorithmID":"default",
+   "uplinkInterval":"60s",
+   "organizationID":"3"
+   }}
+
+// pass
+{"id":"3c4fc4f0-71cd-42ac-895e-a65f2052ec53"}
+{ "id": '023d60c9-7e65-4737-9637-52fb35a5f48a' }
+
+
+
+```
+
+- getDeviceProfiles
+
+```javascript
 
 ```
