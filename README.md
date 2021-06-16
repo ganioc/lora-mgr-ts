@@ -40,11 +40,12 @@ config/config.json
 
 0. steps:
 
-- add an organization, test.org
-- add a network server
+- [x] add an organization, test.org
+- [x] add a network server
 - [x] add a service,
-- [x] add a gateway,
-- add an application,
+- [x] add a gateway,gateway profile
+- [x] add an application,
+- [ ] add a device
 
 1. getApplications
 
@@ -67,6 +68,15 @@ config/config.json
 2. setApplication
 
 ```javascript
+{"application":
+{
+   "name":"orgapp1",
+   "description":"org test app","serviceProfileID":"66eba771-2854-4fa9-bb50-9049d330282a",
+   "organizationID":"3"}
+}
+
+
+
 {
   error: 'application must not be nil',
   code: 3,
@@ -78,6 +88,8 @@ config/config.json
   data: 'application and service-profile must be under the same organization'
 }
 
+// pass
+{ id: '3' }
 
 ```
 
@@ -242,7 +254,7 @@ config/config.json
   message: 'context deadline exceeded',
   details: []
 }
-
+Should be a server we can connect ,otherwise...
 ```
 
 - setGatewayProfile

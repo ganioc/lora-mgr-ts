@@ -16,22 +16,22 @@ describe('Test all', async () => {
 
     describe('Checking Apis', () => {
         it('getApplications, id = 1, offset = 0, limit = 10', async () => {
-            let result = await getApplications(0, 10, 1)
+            let result = await getApplications(0, 10)
             let applications = result as IfApplications;
             console.log(applications)
-            expect(applications.totalCount).equal('1')
+            expect(applications.totalCount).exist
         })
 
         // it('setApplication', async () => {
         //     const application: IfSetApplication = {
         //         description: 'Dummy application 1',
         //         id: '901',
-        //         name: 'Dummy 901',
-        //         organizationID: '9',
+        //         name: 'Dummy901',
+        //         organizationID: '3',
         //         payloadCodec: '',
         //         payloadDecoderScript: '',
         //         payloadEncoderScript: '',
-        //         serviceProfileID: '7fde5908-1e05-4146-94c3-042c2a2bf0aa'
+        //         serviceProfileID: '66eba771-2854-4fa9-bb50-9049d330282a'
         //     }
         //     let result = await setApplication(application);
         //     console.log(result);
