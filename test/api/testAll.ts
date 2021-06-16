@@ -1,6 +1,6 @@
 
-import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfSetApplication, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
-import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer } from '../../src/index.js'
+import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
+import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices } from '../../src/index.js'
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
 
@@ -88,7 +88,7 @@ describe('Test all', async () => {
         //         id: "",
         //         minGWDiversity: 0,
         //         name: "service1",
-        //         networkServerID: "",
+        //         networkServerID: "1",
         //         nwkGeoLoc: true,
         //         organizationID: '3',
         //         prAllowed: true,
@@ -104,8 +104,15 @@ describe('Test all', async () => {
         //     let result = await setService(profile);
         //     console.log(result)
 
-        //     expect(1).to.equal(1)
+        //     expect(result.id).not.empty
         // })
+
+        it('getServices', async () => {
+            let result = await getServices(0, 10, 3)
+            console.log(result);
+            let services = result as IfServices;
+            expect(services.result[0].organizationID).to.equal('3')
+        })
 
         // it('setNetworkServer', async () => {
         //     const server: IfSetNetworkServer = {
@@ -130,7 +137,7 @@ describe('Test all', async () => {
         // })
 
         it('getNetworkServers', async () => {
-            let result = await getNetworkServers(0, 10, 1)
+            let result = await getNetworkServers(0, 10, 3)
             console.log(result)
             let servers: IfNetworkServers = result;
             expect(servers.totalCount).to.equal('1')

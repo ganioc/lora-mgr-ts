@@ -81,7 +81,19 @@ export interface IfSetServiceProfile {
     ulRate: number,
     ulRatePolicy: ServicedlRatePolicy
 }
-
+export interface IfService {
+    id: '66eba771-2854-4fa9-bb50-9049d330282a',
+    name: 'service1',
+    organizationID: '3',
+    networkServerID: '1',
+    createdAt: '2021-06-16T07:11:27.410950Z',
+    updatedAt: '2021-06-16T07:11:27.410950Z',
+    networkServerName: 'ns'
+}
+export interface IfServices {
+    totalCount: string;
+    result: IfService[];
+}
 export interface IfNetworkServer {
     id: string,
     name: string,

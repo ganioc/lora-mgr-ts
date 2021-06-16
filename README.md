@@ -139,7 +139,7 @@ config/config.json
     "id": "string",
     "minGWDiversity": 0,
     "name": "string",
-    "networkServerID": "string",
+    "networkServerID": "1",
     "nwkGeoLoc": true,
     "organizationID": "string",
     "prAllowed": true,
@@ -159,8 +159,36 @@ config/config.json
   details: []
 }
 // success
+{ id: '66eba771-2854-4fa9-bb50-9049d330282a' }
 
+```
 
+- getServices
+
+```javascript
+{
+  totalCount: '2',
+  result: [
+    {
+      id: '66eba771-2854-4fa9-bb50-9049d330282a',
+      name: 'service1',
+      organizationID: '3',
+      networkServerID: '1',
+      createdAt: '2021-06-16T07:11:27.410950Z',
+      updatedAt: '2021-06-16T07:11:27.410950Z',
+      networkServerName: 'ns'
+    },
+    {
+      id: '7fde5908-1e05-4146-94c3-042c2a2bf0aa',
+      name: 'service-profile',
+      organizationID: '1',
+      networkServerID: '1',
+      createdAt: '2021-06-09T10:50:10.754210Z',
+      updatedAt: '2021-06-09T10:50:10.754210Z',
+      networkServerName: 'ns'
+    }
+  ]
+}
 ```
 
 - getNetworkServers
