@@ -41,6 +41,7 @@ config/config.json
 0. steps:
 
 - add an organization, test.org
+- add a network server
 - add a service,
 - add a gateway,
 - add an application,
@@ -117,4 +118,101 @@ config/config.json
   createdAt: '2021-06-16T05:58:23.972958Z',
   updatedAt: '2021-06-16T05:58:23.972958Z'
 }
+```
+
+6. setService
+   test.org.service1
+
+```javascript
+{
+
+    "addGWMetaData": true,
+    "channelMask": "string",
+    "devStatusReqFreq": 0,
+    "dlBucketSize": 0,
+    "dlRate": 0,
+    "dlRatePolicy": "DROP",
+    "drMax": 0,
+    "drMin": 0,
+    "gwsPrivate": true,
+    "hrAllowed": true,
+    "id": "string",
+    "minGWDiversity": 0,
+    "name": "string",
+    "networkServerID": "string",
+    "nwkGeoLoc": true,
+    "organizationID": "string",
+    "prAllowed": true,
+    "raAllowed": true,
+    "reportDevStatusBattery": true,
+    "reportDevStatusMargin": true,
+    "targetPER": 0,
+    "ulBucketSize": 0,
+    "ulRate": 0,
+    "ulRatePolicy": "DROP"
+}
+// feedback
+{
+  error: 'unexpected end of JSON input',
+  code: 3,
+  message: 'unexpected end of JSON input',
+  details: []
+}
+// success
+
+
+```
+
+- getNetworkServers
+
+```javascript
+{
+  totalCount: '1',
+  result: [
+    {
+      id: '1',
+      name: 'ns',
+      server: '127.0.0.1:8000',
+      createdAt: '2021-06-09T10:42:45.491444Z',
+      updatedAt: '2021-06-10T01:25:58.943664Z'
+    }
+  ]
+}
+
+```
+
+- setNetworkServer
+  test.org.server
+
+```javascript
+{
+    "caCert": "string",
+    "gatewayDiscoveryDR": 0,
+    "gatewayDiscoveryEnabled": true,
+    "gatewayDiscoveryInterval": 0,
+    "gatewayDiscoveryTXFrequency": 0,
+    "id": "string",
+    "name": "string",
+    "routingProfileCACert": "string",
+    "routingProfileTLSCert": "string",
+    "routingProfileTLSKey": "string",
+    "server": "string",
+    "tlsCert": "string",
+    "tlsKey": "string"
+  }
+
+// fb
+{
+  error: 'invalid gateway-discovery interval, it must be greater than 0',
+  code: 3,
+  message: 'invalid gateway-discovery interval, it must be greater than 0',
+  details: []
+}
+{
+  error: 'context deadline exceeded',
+  code: 2,
+  message: 'context deadline exceeded',
+  details: []
+}
+
 ```

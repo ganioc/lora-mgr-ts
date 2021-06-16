@@ -1,6 +1,6 @@
 
-import { IfApplications, IfOrganization, IfOrganizations, IfSetApplication, IfSetOrganization } from '../../src/RestApi/interface.js';
-import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById } from '../../src/index.js'
+import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfSetApplication, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
+import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer } from '../../src/index.js'
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
 
@@ -71,6 +71,69 @@ describe('Test all', async () => {
             console.log(result);
             let org = result.organization as IfSetOrganization;
             expect(org.id).equal('3')
+        })
+
+        // it('setService to organization 3', async () => {
+        //     const profile: IfSetServiceProfile = {
+        //         addGWMetaData: true,
+        //         channelMask: '',
+        //         devStatusReqFreq: 0,
+        //         dlBucketSize: 0,
+        //         dlRate: 0,
+        //         dlRatePolicy: "DROP",
+        //         drMax: 0,
+        //         drMin: 0,
+        //         gwsPrivate: true,
+        //         hrAllowed: true,
+        //         id: "",
+        //         minGWDiversity: 0,
+        //         name: "service1",
+        //         networkServerID: "",
+        //         nwkGeoLoc: true,
+        //         organizationID: '3',
+        //         prAllowed: true,
+        //         raAllowed: true,
+        //         reportDevStatusBattery: true,
+        //         reportDevStatusMargin: true,
+        //         targetPER: 0,
+        //         ulBucketSize: 0,
+        //         ulRate: 0,
+        //         ulRatePolicy: "DROP"
+
+        //     }
+        //     let result = await setService(profile);
+        //     console.log(result)
+
+        //     expect(1).to.equal(1)
+        // })
+
+        // it('setNetworkServer', async () => {
+        //     const server: IfSetNetworkServer = {
+        //         caCert: "",
+        //         gatewayDiscoveryDR: 0,
+        //         gatewayDiscoveryEnabled: false,
+        //         gatewayDiscoveryInterval: 0,
+        //         gatewayDiscoveryTXFrequency: 0,
+        //         id: "2",
+        //         name: "org",
+        //         routingProfileCACert: "",
+        //         routingProfileTLSCert: "",
+        //         routingProfileTLSKey: "",
+        //         server: "127.0.0.1:9000",
+        //         tlsCert: "",
+        //         tlsKey: ""
+        //     }
+        //     let result = await setNetworkServer(server);
+        //     console.log(result)
+
+        //     expect(1).to.equal(1)
+        // })
+
+        it('getNetworkServers', async () => {
+            let result = await getNetworkServers(0, 10, 1)
+            console.log(result)
+            let servers: IfNetworkServers = result;
+            expect(servers.totalCount).to.equal('1')
         })
 
     })
