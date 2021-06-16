@@ -1,8 +1,5 @@
 import { strict as assert } from "assert"
-import { getJwt, getDbEnv } from "./env"
-
-// import * as dotenv from 'dotenv'
-// dotenv.config()
+import { getJwt, getDbEnv } from "./env.js"
 
 export async function initEnvFile() {
     console.log('\ninit env local file')
@@ -28,13 +25,12 @@ export async function initEnvFile() {
         console.log('dbEnv saved.')
         console.log(dbEnv.data)
     }
-
 }
 
 
 
 export async function initRESTful() {
-    console.log('init RESTful')
+    console.log('\ninit RESTful')
 
     assert(process.env.EMAIL, 'EMAIL undefined')
     assert(process.env.PASSWORD, 'PASSWORD undefined')

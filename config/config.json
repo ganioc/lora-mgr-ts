@@ -1,4 +1,4 @@
 {
-  "jwt": "",
+  "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhcyIsImV4cCI6MTYyMzg5Mzk1OSwiaWQiOjEsImlzcyI6ImFzIiwibmJmIjoxNjIzODA3NTU5LCJzdWIiOiJ1c2VyIiwidXNlcm5hbWUiOiJhZG1pbiJ9.UE4b9GeMoZPc1G2hDm_AQCNuU04WHfDuJsApmeBg21k",
   "urlBase": "http://192.168.90.45:8080/"
 }
