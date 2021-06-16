@@ -206,3 +206,16 @@ export interface IfSetDeviceProfile {
     uplinkInterval: UpLinkInterval
 
 }
+
+export interface IfSetDevice {
+    applicationID: string,
+    description: string,
+    devEUI: string,
+    deviceProfileID: string,
+    isDisabled: boolean,
+    name: string,
+    referenceAltitude: number,
+    skipFCntCheck: boolean,
+    tags: {},
+    variables: {}
+}

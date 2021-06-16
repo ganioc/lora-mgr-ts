@@ -480,5 +480,101 @@ Should be a server we can connect ,otherwise...
 - getDeviceProfiles
 
 ```javascript
+{
+  totalCount: '3',
+  result: [
+    {
+      id: 'e3a98fa2-3477-47dc-bbca-a2bb2752a607',
+      name: 'device-profile-otaa',
+      organizationID: '1',
+      networkServerID: '1',
+      createdAt: '2021-06-10T02:30:48.923431Z',
+      updatedAt: '2021-06-10T02:30:48.923431Z',
+      networkServerName: 'ns'
+    },
+    {
+      id: '3c4fc4f0-71cd-42ac-895e-a65f2052ec53',
+      name: 'dummydev1',
+      organizationID: '3',
+      networkServerID: '1',
+      createdAt: '2021-06-16T09:57:11.638551Z',
+      updatedAt: '2021-06-16T09:57:11.638551Z',
+      networkServerName: 'ns'
+    },
+    {
+      id: '023d60c9-7e65-4737-9637-52fb35a5f48a',
+      name: 'dummydev2',
+      organizationID: '3',
+      networkServerID: '1',
+      createdAt: '2021-06-16T10:14:28.537721Z',
+      updatedAt: '2021-06-16T10:14:28.537721Z',
+      networkServerName: 'ns'
+    }
+  ]
+}
 
 ```
+
+- setDevice
+
+```javascript
+{
+    "applicationID": "string",
+    "description": "string",
+    "devEUI": "string",
+    "deviceProfileID": "string",
+    "isDisabled": true,
+    "name": "string",
+    "referenceAltitude": 0,
+    "skipFCntCheck": true,
+    "tags": {},
+    "variables": {}
+}
+
+// pass
+{}
+
+```
+
+- getDevices
+
+```javascript
+{
+  totalCount: '2',
+  result: [
+    {
+      devEUI: '60c5a8fffe782164',
+      name: 'CN470节点1',
+      applicationID: '1',
+      description: '测试节点',
+      deviceProfileID: 'e3a98fa2-3477-47dc-bbca-a2bb2752a607',
+      deviceProfileName: 'device-profile-otaa',
+      deviceStatusBattery: 255,
+      deviceStatusMargin: 256,
+      deviceStatusExternalPowerSource: false,
+      deviceStatusBatteryLevelUnavailable: true,
+      deviceStatusBatteryLevel: 0,
+      lastSeenAt: null
+    },
+    {
+      devEUI: '60c5a8fffe782f64',
+      name: 'node',
+      applicationID: '1',
+      description: '测试节点',
+      deviceProfileID: 'e3a98fa2-3477-47dc-bbca-a2bb2752a607',
+      deviceProfileName: 'device-profile-otaa',
+      deviceStatusBattery: 255,
+      deviceStatusMargin: 256,
+      deviceStatusExternalPowerSource: false,
+      deviceStatusBatteryLevelUnavailable: true,
+      deviceStatusBatteryLevel: 0,
+      lastSeenAt: '2021-06-10T07:18:50.808837Z'
+    }
+  ]
+}
+
+
+
+```
+
+-

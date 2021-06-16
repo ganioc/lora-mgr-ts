@@ -22,4 +22,4 @@ export { getOrganizationById } from './RestApi/api/Organization/getOrganizationB
 export { setService, getServices } from './RestApi/api/ServiceProfile/service.js'
 export { getNetworkServers, setNetworkServer } from './RestApi/api/Network/server.js'
 export { getGatewayProfiles, setGatewayProfile, getGateways, setGateway } from './RestApi/api/Gateway/gateway.js'
-export { getDeviceProfiles, setDeviceProfile } from './RestApi/api/Device/device.js'
+export { getDeviceProfiles, setDeviceProfile, getDevices, setDevice } from './RestApi/api/Device/device.js'

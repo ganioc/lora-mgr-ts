@@ -1,8 +1,9 @@
 
-import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetDeviceProfile, IfSetGateway, IfSetGatewayProfile, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
-import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile, getGateways, setGateway, getDeviceProfiles, setDeviceProfile } from '../../src/index.js'
+import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetDevice, IfSetDeviceProfile, IfSetGateway, IfSetGatewayProfile, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
+import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile, getGateways, setGateway, getDeviceProfiles, setDeviceProfile, getDevices, setDevice } from '../../src/index.js'
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
+
 
 
 
@@ -242,5 +243,30 @@ describe('Test all', async () => {
             console.log(result);
             expect(1).to.equal(1)
         })
+
+        it('getDevices', async () => {
+            let result = await getDevices(0, 10)
+            console.log(result)
+
+            expect(1).to.equal(1)
+        })
+
+        // it('setDevice', async () => {
+        //     const device: IfSetDevice = {
+        //         applicationID: '2',
+        //         description: 'dummy device',
+        //         devEUI: '60c5a8fffe782003',
+        //         deviceProfileID: '023d60c9-7e65-4737-9637-52fb35a5f48a',
+        //         isDisabled: false,
+        //         name: 'dummy2',
+        //         referenceAltitude: 20,
+        //         skipFCntCheck: true,
+        //         tags: {},
+        //         variables: {}
+        //     }
+        //     let result = await setDevice(device)
+        //     console.log(result)
+        //     expect(1).to.equal(1)
+        // })
     })
 });
