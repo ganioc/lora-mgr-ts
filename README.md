@@ -101,3 +101,20 @@ config/config.json
 }
 
 ```
+
+5. getOrganizationById
+
+```javascript
+{
+  organization: {
+    id: '3',
+    name: 'organization-9901',
+    displayName: 'test.org',
+    canHaveGateways: true,
+    maxGatewayCount: 5,
+    maxDeviceCount: 100
+  },
+  createdAt: '2021-06-16T05:58:23.972958Z',
+  updatedAt: '2021-06-16T05:58:23.972958Z'
+}
+```

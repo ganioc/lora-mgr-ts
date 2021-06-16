@@ -1,6 +1,6 @@
 
-import { IfApplications, IfSetApplication, IfSetOrganization } from '../../src/RestApi/interface.js';
-import { init, getApplications, setApplication, setOrganization, getOrganizations } from '../../src/index.js'
+import { IfApplications, IfOrganization, IfOrganizations, IfSetApplication, IfSetOrganization } from '../../src/RestApi/interface.js';
+import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById } from '../../src/index.js'
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
 
@@ -56,9 +56,21 @@ describe('Test all', async () => {
         // })
         it('getOrganizations', async () => {
             let result = await getOrganizations(0, 10)
-            let organizations = result as IfApplications;
-            console.log(organizations)
-            expect(organizations.totalCount).equal('3')
+            let organizations = result as IfOrganizations;
+            // console.log(organizations)
+            // expect(organizations.totalCount).equal('3')
+            let org = organizations.result.filter((item: IfOrganization) => {
+                return item.name === 'organization-9901'
+            })
+            console.log(org[0])
+
+            expect(org[0]).exist
+        })
+        it('getOrganizationById(3)', async () => {
+            let result = await getOrganizationById(3);
+            console.log(result);
+            let org = result.organization as IfSetOrganization;
+            expect(org.id).equal('3')
         })
 
     })

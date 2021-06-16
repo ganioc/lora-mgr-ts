@@ -49,3 +49,7 @@ export interface IfOrganization {
     updatedAt: string
 
 }
+export interface IfOrganizations {
+    totalCount: string;
+    result: IfOrganization[];
+}

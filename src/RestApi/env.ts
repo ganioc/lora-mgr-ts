@@ -73,7 +73,7 @@ export function parseJwt(token: string) {
 export function isValidJwtExp(date: number): boolean {
     let now = new Date().getTime();
     let due = new Date(date * 1000).getTime();
-    console.log('now:', now, 'due:', due)
+    // console.log('now:', now, 'due:', due)
 
     return (due - now) >= 60000
 }
