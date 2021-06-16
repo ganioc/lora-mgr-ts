@@ -5,6 +5,7 @@ axios.defaults.timeout = 10000
 
 export const axiosPost = async function (url: string, data: any): Promise<any> {
     try {
+        console.log('Post Url:', url)
         const jwt = await getJwt();
         let result = await axios.post
             (url, data, {

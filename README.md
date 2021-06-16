@@ -25,9 +25,13 @@ Config Parameters
 
 ## Config File
 
-Save jwt to config.json, so we don't have to query token everytime.
+Save jwt to config.json, so we don't have to query token everytime. Every time axios used, jwt token will be checked , otherwise it will be updated.
 
 ```
 config/config.json
 
 ```
+
+## Test with mocha
+
+% ./node_modules/.bin/mocha out/test/api/testAll.js

@@ -14,3 +14,4 @@ export async function init() {
     await initRESTful();
 }
 
+export { getApplications } from './RestApi/api/getApplications.js'

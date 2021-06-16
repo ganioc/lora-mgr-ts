@@ -1,6 +1,8 @@
 import { strict as assert } from "assert"
 import { getJwt, getDbEnv } from "./env.js"
 
+
+
 export async function initEnvFile() {
     console.log('\ninit env local file')
     assert(process.env.protocol, 'env protocol undefined')
@@ -13,7 +15,7 @@ export async function initEnvFile() {
     const urlStr = process.env.protocol
         + '://'
         + process.env.HOST + ':'
-        + process.env.PORT + '/'
+        + process.env.PORT
     console.log('url base:', urlStr)
 
     if (!dbEnv.data || urlStr !== dbEnv.data.urlBase) {
@@ -36,6 +38,6 @@ export async function initRESTful() {
     assert(process.env.PASSWORD, 'PASSWORD undefined')
 
     let jwtStr = await getJwt();
-    console.log('jwtStr:', jwtStr)
+    console.log('Using jwt:', jwtStr)
 
 }
