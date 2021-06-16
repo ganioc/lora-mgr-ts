@@ -42,7 +42,7 @@ config/config.json
 
 - add an organization, test.org
 - add a network server
-- add a service,
+- [x] add a service,
 - add a gateway,
 - add an application,
 
