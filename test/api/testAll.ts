@@ -1,6 +1,6 @@
 
-import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
-import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices } from '../../src/index.js'
+import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetGatewayProfile, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
+import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile } from '../../src/index.js'
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
 
@@ -143,7 +143,27 @@ describe('Test all', async () => {
             expect(servers.totalCount).to.equal('1')
         })
 
+        it('getGatewayProfiles', async () => {
+            let result = await getGatewayProfiles(0, 10, 1)
+            console.log(result);
+            expect(1).to.equal(1)
+        })
 
+        // it('setGatewayProfile', async () => {
+        //     const profile: IfSetGatewayProfile = {
+        //         channels: [0, 1, 2],
+        //         channelsStr: "0,1,2",
+        //         extraChannels: [],
+        //         id: '1',
+        //         name: 'gwprofile2',
+        //         networkServerID: '1',
+        //         statsInterval: '30s'
+        //     }
+
+        //     let result = await setGatewayProfile(profile)
+        //     console.log(result);
+        //     expect(1).to.equal(1)
+        // })
 
     })
 });

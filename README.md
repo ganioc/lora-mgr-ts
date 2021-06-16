@@ -244,3 +244,65 @@ config/config.json
 }
 
 ```
+
+- setGatewayProfile
+
+```javascript
+"gatewayProfile": {
+    "channels": [
+      0
+    ],
+    "extraChannels": [
+      {
+        "bandwidth": 0,
+        "bitrate": 0,
+        "frequency": 0,
+        "modulation": "LORA",
+        "spreadingFactors": [
+          0
+        ]
+      }
+    ],
+    "id": "string",
+    "name": "string",
+    "networkServerID": "string",
+    "statsInterval": "string"
+  }
+
+{"gatewayProfile":
+{"name":"orggateway1",
+"statsInterval":"30s",
+"channelsStr":"0,1,2",
+"channels":[0,1,2],
+"networkServerID":"1"}}
+// feedback
+{
+  error: 'object does not exist',
+  code: 5,
+  message: 'object does not exist',
+  details: []
+}
+{
+  error: 'service_profile must not be nil',
+  code: 3,
+  message: 'service_profile must not be nil',
+  details: []
+}
+// pass
+{ id: '60013b9f-2f4d-45be-b035-1bc99fd5c437' }
+
+```
+
+- getGatewayProfiles
+
+```javascript
+
+{
+   "totalCount":"1",
+   "result":[
+   {
+      "id":"6472c530-d432-4b41-b0c4-a8847e972365","name":"orggateway1","networkServerID":"1","networkServerName":"ns","createdAt":"2021-06-16T08:08:17.981509Z","updatedAt":"2021-06-16T08:08:17.981509Z"}
+   ]}
+
+
+```

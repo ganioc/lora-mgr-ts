@@ -120,3 +120,23 @@ export interface IfSetNetworkServer {
     tlsCert: string,
     tlsKey: string
 }
+
+export type GatewayModulation = "LORA" | ""
+export interface IfExtraChannel {
+    bandwidth: number,
+    bitrate: number,
+    frequency: number,
+    modulation: GatewayModulation,
+    spreadingFactors: number[]
+}
+export interface IfSetGatewayProfile {
+
+    channels: number[],
+    channelsStr: string,
+    extraChannels: IfExtraChannel[],
+    id: string,
+    name: string,
+    networkServerID: string,
+    statsInterval: string
+
+}
