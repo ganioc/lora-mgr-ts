@@ -1,14 +1,15 @@
 import axios from 'axios'
-import { getDbEnv } from '../RestApi/env.js'
+import { getJwt } from '../RestApi/env.js'
 
 axios.defaults.timeout = 10000
 
 export const axiosPost = async function (url: string, data: any): Promise<any> {
     try {
+        const jwt = await getJwt();
         let result = await axios.post
             (url, data, {
                 headers: {
-                    "Grpc-Metadata-Authorization": 'Bearer ' + getDbEnv().data!.jwt,
+                    "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
                     "verify": false
                 }
             })
@@ -26,10 +27,10 @@ export const axiosPost = async function (url: string, data: any): Promise<any> {
 export const axiosGet = async function (url: string): Promise<any> {
     try {
         console.log('Get Url:', url)
-
+        const jwt = await getJwt();
         let result = await axios.get(url, {
             headers: {
-                "Grpc-Metadata-Authorization": 'Bearer ' + getDbEnv().data!.jwt,
+                "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
                 "verify": false
             }
         })

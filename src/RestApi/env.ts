@@ -35,8 +35,8 @@ export async function getJwt() {
             dbEnv.write();
         } else {
             console.error('Can not get jwt')
-            console.log('Delay 5 seconds')
-            await DelayMs(5000)
+            console.log('Delay 10 seconds')
+            await DelayMs(10000)
             console.log('Fetch jwt again')
             await getJwt()
         }
@@ -60,7 +60,7 @@ export function isValidJwt(): boolean {
     }
 }
 export function parseJwt(token: string) {
-    console.log("check jwt:", token)
+    // console.log("check jwt:", token)
     console.log("token length:", token.length)
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

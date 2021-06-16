@@ -35,11 +35,7 @@ export async function initRESTful() {
     assert(process.env.EMAIL, 'EMAIL undefined')
     assert(process.env.PASSWORD, 'PASSWORD undefined')
 
-    console.log("\nUpdate JWT")
-
     let jwtStr = await getJwt();
     console.log('jwtStr:', jwtStr)
-
-    // if jwtStr not valid, re do it after delay
 
 }
