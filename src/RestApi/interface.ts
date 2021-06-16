@@ -140,3 +140,31 @@ export interface IfSetGatewayProfile {
     statsInterval: string
 
 }
+
+export interface IfBoard {
+    fineTimestampKey: string,
+    fpgaID: string
+}
+type LocationSource = "UNKNOWN" | ""
+export interface IfSetGateway {
+
+    boards: IfBoard[],
+    description: string,
+    discoveryEnabled: boolean,
+    gatewayProfileID: string,
+    id: string,
+    location: {
+        accuracy: number,
+        altitude: number,
+        latitude: number,
+        longitude: number,
+        source: LocationSource
+    },
+    metadata: {},
+    name: string,
+    networkServerID: string,
+    organizationID: string,
+    serviceProfileID: string,
+    tags: {}
+}
+

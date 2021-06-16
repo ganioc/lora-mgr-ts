@@ -1,6 +1,6 @@
 
-import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetGatewayProfile, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
-import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile } from '../../src/index.js'
+import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetGateway, IfSetGatewayProfile, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
+import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile, getGateways, setGateway } from '../../src/index.js'
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
 
@@ -144,7 +144,7 @@ describe('Test all', async () => {
         })
 
         it('getGatewayProfiles', async () => {
-            let result = await getGatewayProfiles(0, 10, 1)
+            let result = await getGatewayProfiles(0, 10)
             console.log(result);
             expect(1).to.equal(1)
         })
@@ -162,6 +162,38 @@ describe('Test all', async () => {
 
         //     let result = await setGatewayProfile(profile)
         //     console.log(result);
+        //     expect(1).to.equal(1)
+        // })
+
+        it('getGateways', async () => {
+            let result = await getGateways(0, 10);
+            console.log(result);
+            expect(1).to.equal(1)
+        })
+
+        // it('setGateway', async () => {
+        //     const gw: IfSetGateway = {
+        //         boards: [],
+        //         description: '2nd test gateway',
+        //         discoveryEnabled: false,
+        //         gatewayProfileID: '6472c530-d432-4b41-b0c4-a8847e972365',
+        //         id: '5000201090123402',
+        //         location: {
+        //             accuracy: 0,
+        //             altitude: 1,
+        //             latitude: 1,
+        //             longitude: 1,
+        //             source: "UNKNOWN"
+        //         },
+        //         metadata: {},
+        //         name: 'orggw02',
+        //         networkServerID: '1',
+        //         organizationID: '3',
+        //         serviceProfileID: '66eba771-2854-4fa9-bb50-9049d330282a',
+        //         tags: {}
+        //     }
+        //     let result = await setGateway(gw)
+        //     console.log(result)
         //     expect(1).to.equal(1)
         // })
 

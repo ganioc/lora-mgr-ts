@@ -21,4 +21,4 @@ export { getOrganizations } from './RestApi/api/Organization/getOrganizations.js
 export { getOrganizationById } from './RestApi/api/Organization/getOrganizationById.js'
 export { setService, getServices } from './RestApi/api/ServiceProfile/service.js'
 export { getNetworkServers, setNetworkServer } from './RestApi/api/Network/server.js'
-export { getGatewayProfiles, setGatewayProfile } from './RestApi/api/Gateway/gateway.js'
+export { getGatewayProfiles, setGatewayProfile, getGateways, setGateway } from './RestApi/api/Gateway/gateway.js'

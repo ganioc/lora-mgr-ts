@@ -43,7 +43,7 @@ config/config.json
 - add an organization, test.org
 - add a network server
 - [x] add a service,
-- add a gateway,
+- [x] add a gateway,
 - add an application,
 
 1. getApplications
@@ -303,6 +303,103 @@ config/config.json
    {
       "id":"6472c530-d432-4b41-b0c4-a8847e972365","name":"orggateway1","networkServerID":"1","networkServerName":"ns","createdAt":"2021-06-16T08:08:17.981509Z","updatedAt":"2021-06-16T08:08:17.981509Z"}
    ]}
+
+
+```
+
+- getGateways
+
+```javascript
+{
+  totalCount: '1',
+  result: [
+    {
+      id: '3133383031004400',
+      name: 'SX1308',
+      description: 'internal gateway',
+      createdAt: '2021-06-10T01:48:05.386193Z',
+      updatedAt: '2021-06-10T07:19:13.700093Z',
+      firstSeenAt: '2021-06-10T01:53:48.275945Z',
+      lastSeenAt: '2021-06-10T07:19:13.697247Z',
+      organizationID: '1',
+      networkServerID: '1',
+      location: [Object],
+      networkServerName: 'ns'
+    }
+  ]
+}
+
+// pass
+{
+   "totalCount":"1",
+   "result":[
+      {
+      "id":"4030201090123456",
+      "name":"orggw01",
+      "description":"org gateway","createdAt":"2021-06-16T09:11:43.092936Z","updatedAt":"2021-06-16T09:11:43.092936Z","firstSeenAt":null,"lastSeenAt":null,"organizationID":"3","networkServerID":"1","location":
+      {
+         "latitude":0.004677772516779128,
+         "longitude":-0.008239746093750002,
+         "altitude":1,
+         "source":"UNKNOWN",
+         "accuracy":0
+      },
+      "networkServerName":"ns"}]}
+
+```
+
+- setGateway
+
+```javascript
+{
+        "boards": [
+            {
+                "fineTimestampKey": "string",
+                "fpgaID": "string"
+            }
+        ],
+        "description": "string",
+        "discoveryEnabled": true,
+        "gatewayProfileID": "string",
+        "id": "string",
+        "location": {
+            "accuracy": 0,
+            "altitude": 0,
+            "latitude": 0,
+            "longitude": 0,
+            "source": "UNKNOWN"
+        },
+        "metadata": {},
+        "name": "string",
+        "networkServerID": "string",
+        "organizationID": "string",
+        "serviceProfileID": "string",
+        "tags": {}
+    }
+
+{
+   "gateway":
+   {
+      "location":
+      {
+         "latitude":0.004677772516779128,
+         "longitude":-0.008239746093750002,
+         "altitude":1
+      },
+      "name":"orggw01",
+      "description":"org gateway",
+      "id":"4030201090123456","gatewayProfileID":"6472c530-d432-4b41-b0c4-a8847e972365","serviceProfileID":"66eba771-2854-4fa9-bb50-9049d330282a",
+      "networkServerID":"1",
+      "organizationID":"3"
+   }
+}
+
+
+// feedback
+{"error":"bad gateway mac: lorawan: exactly 8 bytes are expected","code":3,"message":"bad gateway mac: lorawan: exactly 8 bytes are expected","details":[]}
+
+// pass
+{}
 
 
 ```
