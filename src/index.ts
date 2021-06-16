@@ -14,4 +14,7 @@ export async function init() {
     await initRESTful();
 }
 
-export { getApplications } from './RestApi/api/getApplications.js'
+export { getApplications } from './RestApi/api/Application/getApplications.js'
+export { setApplication } from './RestApi/api/Application/setApplication.js'
+export { setOrganization } from './RestApi/api/Organization/setOrganization.js'
+export { getOrganizations } from './RestApi/api/Organization/getOrganizations.js'

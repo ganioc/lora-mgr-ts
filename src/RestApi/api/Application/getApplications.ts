@@ -1,7 +1,7 @@
 
 import { strict as assert } from "assert";
-import { axiosGet } from "../../http/index.js";
-import { getDbEnv } from "../env.js";
+import { axiosGet } from "../../../http/index.js";
+import { getDbEnv } from "../../env.js";
 
 
 export async function getApplications(offset: number, limit: number, orgId: number) {
