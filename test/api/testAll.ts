@@ -272,7 +272,7 @@ describe('Test all', async () => {
         it('getGatewayStats', async () => {
             let tm = new Date().getTime();
             let tmStart = tm - 24 * 3600 * 1000
-            let result = await getGatewayStats('3133383031004400', 'minute', tmStart, tm)
+            let result = await getGatewayStats('3133383031004400', 'hour', tmStart, tm)
             console.log(result);
             expect(1).to.equal(1)
         })
