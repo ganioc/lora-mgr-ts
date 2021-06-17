@@ -44,8 +44,14 @@ config/config.json
 - [x] add a network server
 - [x] add a service,
 - [x] add a gateway,gateway profile
+  - [] query gateway
 - [x] add an application,
-- [ ] add a device profile, device
+- [x] add a device profile, device
+  - [] delete device
+  - [] query device
+  - [] update device
+  - [] device status,
+  - [] send to device,
 
 1. getApplications
 
@@ -577,4 +583,15 @@ Should be a server we can connect ,otherwise...
 
 ```
 
--
+- getGatewayStats
+
+```javascript
+{
+  error: 'timestamp: nil Timestamp',
+  code: 3,
+  message: 'timestamp: nil Timestamp',
+  details: []
+}
+
+
+```

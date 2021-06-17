@@ -1,6 +1,6 @@
 
 import { IfApplications, IfNetworkServers, IfOrganization, IfOrganizations, IfServices, IfSetApplication, IfSetDevice, IfSetDeviceProfile, IfSetGateway, IfSetGatewayProfile, IfSetNetworkServer, IfSetOrganization, IfSetServiceProfile } from '../../src/RestApi/interface.js';
-import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile, getGateways, setGateway, getDeviceProfiles, setDeviceProfile, getDevices, setDevice } from '../../src/index.js'
+import { init, getApplications, setApplication, setOrganization, getOrganizations, getOrganizationById, setService, getNetworkServers, setNetworkServer, getServices, getGatewayProfiles, setGatewayProfile, getGateways, setGateway, getDeviceProfiles, setDeviceProfile, getDevices, setDevice, getGatewayStats } from '../../src/index.js'
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
 
@@ -12,7 +12,7 @@ describe('Test all', async () => {
     describe('Test Init', async () => {
         it('init', async () => {
             await init();
-            expect(getDbEnv().data?.urlBase).to.equal('http://192.168.90.45:8080')
+            expect(getDbEnv().data?.urlBase).to.equal('http://192.168.31.159:8080')
         })
     })
 
@@ -268,5 +268,13 @@ describe('Test all', async () => {
         //     console.log(result)
         //     expect(1).to.equal(1)
         // })
+
+        it('getGatewayStats', async () => {
+            let tm = new Date().getTime();
+            let tmStart = tm - 24 * 3600 * 1000
+            let result = await getGatewayStats('3133383031004400', 'minute', tmStart, tm)
+            console.log(result);
+            expect(1).to.equal(1)
+        })
     })
 });

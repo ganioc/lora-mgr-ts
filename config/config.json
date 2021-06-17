@@ -1,4 +1,4 @@
 {
-  "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhcyIsImV4cCI6MTYyMzg5ODUxOSwiaWQiOjEsImlzcyI6ImFzIiwibmJmIjoxNjIzODEyMTE5LCJzdWIiOiJ1c2VyIiwidXNlcm5hbWUiOiJhZG1pbiJ9.vAlwHorjsAxm3_3NThBfWtOxD9pD1hk4zXnWolvTgGQ",
-  "urlBase": "http://192.168.90.45:8080"
+  "jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhcyIsImV4cCI6MTYyNDAwMjc4MywiaWQiOjEsImlzcyI6ImFzIiwibmJmIjoxNjIzOTE2MzgzLCJzdWIiOiJ1c2VyIiwidXNlcm5hbWUiOiJhZG1pbiJ9.whSGNERiPd2hX3AMDpgdC4vVQM_QCSrzi3i8-P-ZIRM",
+  "urlBase": "http://192.168.31.159:8080"
 }

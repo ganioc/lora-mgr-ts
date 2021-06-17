@@ -1,6 +1,6 @@
 import { axiosGet, axiosPost } from "../../../http/index.js";
 import { getDbEnv } from "../../env.js";
-import { IfSetGateway, IfSetGatewayProfile } from "../../interface.js";
+import { IfInterval, IfSetGateway, IfSetGatewayProfile } from "../../interface.js";
 import { strict as assert } from "assert";
 
 export async function getGatewayProfiles(offset: number, limit: number, networkServerId?: number) {
@@ -54,4 +54,14 @@ export async function setGateway(option: IfSetGateway) {
     return axiosPost(url, {
         gateway: option
     })
+}
+
+
+export async function getGatewayStats(gwid: string, interval: IfInterval, start: number, end: number) {
+    assert(gwid.length === 16, "gwid length")
+
+    let url = getDbEnv().data?.urlBase
+        + `/api/gateways/${gwid}/stats`
+
+    return axiosGet(url)
 }
