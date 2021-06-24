@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node out/test/test.js",
-    "build": "tsc -p ./"
+    "build": "tsc -p ./",
+    "clean": "rm -rf out/"
   },
   "author": "",
   "license": "ISC",

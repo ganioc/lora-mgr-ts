@@ -54,7 +54,7 @@ export function isValidJwt(): boolean {
         // console.log('obj', obj)
         return isValidJwtExp(obj.exp)
     } catch (e) {
-        console.log(e)
+        // console.log(e)
         console.log('Invalid jwt')
         return false;
     }

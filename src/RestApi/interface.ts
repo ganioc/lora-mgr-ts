@@ -221,3 +221,4 @@ export interface IfSetDevice {
 }
 
 export type IfInterval = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year'
+

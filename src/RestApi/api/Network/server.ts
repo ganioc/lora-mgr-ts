@@ -16,7 +16,13 @@ export async function getNetworkServers(offset: number, limit: number, orgId: nu
 
     return axiosGet(url)
 }
-
+export async function getNetworkServerById(id: number) {
+    assert(id > 0, "id >0")
+    const url = getDbEnv().data?.urlBase
+        + '/api/network-servers/'
+        + id
+    return axiosGet(url)
+}
 
 export async function setNetworkServer(option: IfSetNetworkServer) {
 

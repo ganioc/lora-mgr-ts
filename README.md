@@ -25,7 +25,7 @@ Config Parameters
 
 ## Config File
 
-Save jwt to config.json, so we don't have to query token everytime. Every time axios used, jwt token will be checked , otherwise it will be updated.
+Save jwt to config.json, so we don't have to query token everytime. Every time axios is used, jwt token will be checked , otherwise it will be updated.
 
 ```
 config/config.json
@@ -42,9 +42,9 @@ config/config.json
 
 - [x] add an organization, test.org
 - [x] add a network server
-- [x] add a service,
+- [x] add a service, service profile
 - [x] add a gateway,gateway profile
-  - [] query gateway
+  - [x] query gateway
 - [x] add an application,
 - [x] add a device profile, device
   - [] delete device
@@ -101,10 +101,20 @@ config/config.json
 
 3. setOrganization
 
-```
-// Success feedback
-{ id: '3' }
+```javascript
+const organization: IfSetOrganization = {
+  canHaveGateways: true,
+  displayName: "yangTest",
+  id: "3",
+  maxDeviceCount: 100,
+  maxGatewayCount: 5,
+  name: "yangTest",
+}; // id:2
 
+// Success feedback
+{
+  id: "3";
+}
 ```
 
 4. getOrganizations
@@ -223,6 +233,33 @@ config/config.json
       updatedAt: '2021-06-10T01:25:58.943664Z'
     }
   ]
+}
+
+```
+
+- getNetworkServerById(id)
+
+```javascript
+{
+  networkServer: {
+    id: '1',
+    name: 'ns',
+    server: '127.0.0.1:8000',
+    caCert: '',
+    tlsCert: '',
+    tlsKey: '',
+    routingProfileCACert: '',
+    routingProfileTLSCert: '',
+    routingProfileTLSKey: '',
+    gatewayDiscoveryEnabled: false,
+    gatewayDiscoveryInterval: 0,
+    gatewayDiscoveryTXFrequency: 0,
+    gatewayDiscoveryDR: 0
+  },
+  createdAt: '2021-06-15T07:29:11.397527Z',
+  updatedAt: '2021-06-15T07:29:11.397527Z',
+  version: '3.13.0',
+  region: 'CN470'
 }
 
 ```
