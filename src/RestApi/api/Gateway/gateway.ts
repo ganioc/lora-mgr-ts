@@ -1,4 +1,4 @@
-import { axiosGet, axiosPost } from "../../../http/index.js";
+import { axiosGet, axiosPost, axiosPut, axiosDelete } from "../../../http/index.js";
 import { getDbEnv } from "../../env.js";
 import { IfInterval, IfSetGateway, IfSetGatewayProfile } from "../../interface.js";
 import { strict as assert } from "assert";
@@ -28,6 +28,29 @@ export async function setGatewayProfile(option: IfSetGatewayProfile) {
     return axiosPost(url, {
         gatewayProfile: option
     })
+}
+export async function getGatewayProfileById(id: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/gateway-profiles'
+        + `/${id}`
+    return axiosGet(url);
+}
+
+export async function updateGatewayProfileById(id: string, option: IfSetGatewayProfile) {
+
+    const url = getDbEnv().data?.urlBase
+        + '/api/gateway-profiles'
+        + `/${id}`
+
+    return axiosPut(url, {
+        gatewayProfile: option
+    })
+}
+export async function deleteGatewayProfileById(id: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/gateway-profiles'
+        + `/${id}`
+    return axiosDelete(url);
 }
 
 export async function getGateways(offset: number, limit: number, organizationId?: number) {

@@ -256,6 +256,10 @@ const organization: IfSetOrganization = {
 
 ```
 
+- updateServiceById(id:string)
+
+- deleteServiceById()
+
 - getNetworkServers
 
 ```javascript

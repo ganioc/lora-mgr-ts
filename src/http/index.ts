@@ -1,2 +1,2 @@
 
-export { axiosGet, axiosPost } from './axios.js'
+export { axiosGet, axiosPost, axiosDelete, axiosPut } from './axios.js'

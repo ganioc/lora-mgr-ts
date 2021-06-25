@@ -1,6 +1,6 @@
 
-import { IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
-import { deleteServiceById, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setOrganization, setService, updateServiceById } from "../../src/index.js";
+import { IfSetGatewayProfile, IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
+import { deleteGatewayProfileById, deleteServiceById, getGatewayProfileById, getGatewayProfiles, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setGatewayProfile, setOrganization, setService, updateGatewayProfileById, updateServiceById } from "../../src/index.js";
 
 async function createOrg() {
     const organization: IfSetOrganization = {
@@ -83,6 +83,42 @@ async function updateServiceHere() {
     let result = await updateServiceById('cc50dd3e-b06b-46ce-8ec4-2aa3ad1bf6b4', profile);
     console.log(result)
 }
+async function setGatewayProfileHere() {
+    const profile: IfSetGatewayProfile = {
+        channels: [0, 1, 2],
+        channelsStr: "0,1,2",
+        extraChannels: [],
+        id: '1',
+        name: 'gwprofile2',
+        networkServerID: '1',
+        statsInterval: '30s'
+    }
+
+    let result = await setGatewayProfile(profile)
+    console.log(result);
+}
+async function updateGatewayProfileByIdHere() {
+    const profile: IfSetGatewayProfile = {
+        channels: [0, 1, 2, 4],
+        channelsStr: "0,1,2,4",
+        extraChannels: [],
+        id: '1',
+        name: 'gwprofile2000',
+        networkServerID: '1',
+        statsInterval: '330s'
+    }
+
+    let result = await updateGatewayProfileById('63bad07d-433f-4bad-a58c-17a7e93d13f5', profile)
+    console.log(result);
+}
+async function getGatewayProfileByIdHere() {
+    let result = await getGatewayProfileById('63bad07d-433f-4bad-a58c-17a7e93d13f5')
+    console.log(result)
+}
+async function deleteGatewayProfileByIdHere() {
+    let result = await deleteGatewayProfileById('63bad07d-433f-4bad-a58c-17a7e93d13f5')
+    console.log(result)
+}
 async function main() {
     await init();
 
@@ -103,6 +139,13 @@ async function main() {
 
     // await updateServiceHere()
 
+    // await setGatewayProfileHere()
+    // let result = await getGatewayProfiles(0, 10, 1);
+    // console.log(result)
+
+    // await updateGatewayProfileByIdHere();
+    // await getGatewayProfileByIdHere();
+    // await deleteGatewayProfileByIdHere()
 }
 
 main()
