@@ -94,3 +94,29 @@ export async function getGatewayStats(gwid: string, interval: IfInterval, start:
 
     return axiosGet(url)
 }
+
+export async function getGatewayById(id: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/gateways'
+        + '/' + id
+
+    return axiosGet(url);
+}
+
+export async function updateGatewayById(id: string, option: IfSetGateway) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/gateways'
+        + '/' + id
+
+    return axiosPut(url, {
+        gateway: option
+    })
+}
+
+export async function deleteGatewayById(id: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/gateways'
+        + '/' + id
+
+    return axiosDelete(url);
+}

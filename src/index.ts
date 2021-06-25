@@ -21,5 +21,5 @@ export { getOrganizations } from './RestApi/api/Organization/getOrganizations.js
 export { getOrganizationById } from './RestApi/api/Organization/getOrganizationById.js'
 export { setService, getServices, getServiceById, deleteServiceById, updateServiceById } from './RestApi/api/ServiceProfile/service.js'
 export { getNetworkServers, setNetworkServer, getNetworkServerById } from './RestApi/api/Network/server.js'
-export { getGatewayProfiles, setGatewayProfile, updateGatewayProfileById, getGatewayProfileById, deleteGatewayProfileById, getGateways, setGateway, getGatewayStats } from './RestApi/api/Gateway/gateway.js'
+export { getGatewayProfiles, setGatewayProfile, updateGatewayProfileById, getGatewayProfileById, deleteGatewayProfileById, getGateways, setGateway, getGatewayStats, getGatewayById, updateGatewayById, deleteGatewayById } from './RestApi/api/Gateway/gateway.js'
 export { getDeviceProfiles, setDeviceProfile, getDevices, setDevice } from './RestApi/api/Device/device.js'

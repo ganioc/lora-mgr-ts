@@ -400,8 +400,13 @@ Should be a server we can connect ,otherwise...
       "id":"6472c530-d432-4b41-b0c4-a8847e972365","name":"orggateway1","networkServerID":"1","networkServerName":"ns","createdAt":"2021-06-16T08:08:17.981509Z","updatedAt":"2021-06-16T08:08:17.981509Z"}
    ]}
 
-
 ```
+
+- getGatewayProfileById
+
+- updateGatewayProfileById
+
+- deleteGatewayProfileById
 
 - getGateways
 
@@ -499,6 +504,44 @@ Should be a server we can connect ,otherwise...
 
 
 ```
+
+- getGatewayById
+
+```javascript
+{
+  gateway: {
+    id: '5000201090123402',
+    name: 'orggw0202',
+    description: '02 test gateway',
+    location: {
+      latitude: 1,
+      longitude: 1,
+      altitude: 1,
+      source: 'UNKNOWN',
+      accuracy: 0
+    },
+    organizationID: '1',
+    discoveryEnabled: false,
+    networkServerID: '1',
+    gatewayProfileID: 'd8ad7a7f-fae1-492a-947d-901062b3e618',
+    boards: [],
+    tags: {},
+    metadata: {},
+    serviceProfileID: 'cc50dd3e-b06b-46ce-8ec4-2aa3ad1bf6b4'
+  },
+  createdAt: '2021-06-25T03:32:55.080761Z',
+  updatedAt: '2021-06-25T03:32:55.080761Z',
+  firstSeenAt: null,
+  lastSeenAt: null
+}
+
+```
+
+- getGatewayStats()
+
+- udpateGatewayById()
+
+- deleteGatewayById()
 
 - setDeviceProfile
 

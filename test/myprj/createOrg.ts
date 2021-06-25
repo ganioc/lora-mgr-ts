@@ -1,6 +1,6 @@
 
-import { IfSetGatewayProfile, IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
-import { deleteGatewayProfileById, deleteServiceById, getGatewayProfileById, getGatewayProfiles, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setGatewayProfile, setOrganization, setService, updateGatewayProfileById, updateServiceById } from "../../src/index.js";
+import { IfSetGateway, IfSetGatewayProfile, IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
+import { deleteGatewayById, deleteGatewayProfileById, deleteServiceById, getGatewayById, getGatewayProfileById, getGatewayProfiles, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setGateway, setGatewayProfile, setOrganization, setService, updateGatewayById, updateGatewayProfileById, updateServiceById } from "../../src/index.js";
 
 async function createOrg() {
     const organization: IfSetOrganization = {
@@ -119,6 +119,55 @@ async function deleteGatewayProfileByIdHere() {
     let result = await deleteGatewayProfileById('63bad07d-433f-4bad-a58c-17a7e93d13f5')
     console.log(result)
 }
+async function setGatewaysHere(id: string) {
+    const gw: IfSetGateway = {
+        boards: [],
+        description: id + ' test gateway',
+        discoveryEnabled: false,
+        gatewayProfileID: 'd8ad7a7f-fae1-492a-947d-901062b3e618',
+        id: '50002010901234' + id,
+        location: {
+            accuracy: 0,
+            altitude: 1,
+            latitude: 1,
+            longitude: 1,
+            source: "UNKNOWN"
+        },
+        metadata: {},
+        name: 'orggw02' + id,
+        networkServerID: '1',
+        organizationID: '1',
+        serviceProfileID: 'cc50dd3e-b06b-46ce-8ec4-2aa3ad1bf6b4',
+        tags: {}
+    }
+    let result = await setGateway(gw)
+    console.log(result)
+}
+async function updateGatewayByIdHere(mid: string) {
+    const id = 'Y'
+    const gw: IfSetGateway = {
+        boards: [],
+        description: id + ' test gateway',
+        discoveryEnabled: false,
+        gatewayProfileID: 'd8ad7a7f-fae1-492a-947d-901062b3e618',
+        id: '50002010901234' + id,
+        location: {
+            accuracy: 0,
+            altitude: 1,
+            latitude: 1,
+            longitude: 1,
+            source: "UNKNOWN"
+        },
+        metadata: {},
+        name: 'orggw02' + id,
+        networkServerID: '1',
+        organizationID: '1',
+        serviceProfileID: 'cc50dd3e-b06b-46ce-8ec4-2aa3ad1bf6b4',
+        tags: {}
+    }
+    let result = await updateGatewayById(mid, gw)
+    console.log(result)
+}
 async function main() {
     await init();
 
@@ -146,6 +195,16 @@ async function main() {
     // await updateGatewayProfileByIdHere();
     // await getGatewayProfileByIdHere();
     // await deleteGatewayProfileByIdHere()
+
+    // await setGatewaysHere('01');
+    // await setGatewaysHere('02');
+    // let result = await getGatewayById('5000201090123402')
+    // console.log(result)
+
+    // await updateGatewayByIdHere('5000201090123402');
+    // let result = await deleteGatewayById('5000201090123402')
+    // console.log(result)
+
 }
 
 main()
