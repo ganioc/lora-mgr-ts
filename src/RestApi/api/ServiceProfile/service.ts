@@ -32,3 +32,10 @@ export async function getServices(offset: number, limit: number, orgId?: number,
 
     return axiosGet(url)
 }
+
+export async function getServiceById(id: string) {
+    let url = getDbEnv().data?.urlBase
+        + '/api/service-profiles/' + id;
+
+    return axiosGet(url);
+}

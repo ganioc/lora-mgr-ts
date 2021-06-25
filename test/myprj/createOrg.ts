@@ -1,6 +1,6 @@
 
 import { IfSetOrganization } from "../../src/RestApi/interface.js";
-import { getNetworkServerById, getNetworkServers, getOrganizationById, init, setOrganization } from "../../src/index.js";
+import { getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setOrganization } from "../../src/index.js";
 
 async function createOrg() {
     const organization: IfSetOrganization = {
@@ -30,7 +30,13 @@ async function main() {
     // await getOrg(2)
     await getNW()
 
-    let result = await getNetworkServerById(1)
+    // let result = await getNetworkServerById(1)
+    // console.log(result)
+
+    // let result = await getServices(0, 5, 1);
+    // console.log(result)
+
+    let result = await getServiceById('9ade8de6-ead4-4ce6-8aca-d6a043637513')
     console.log(result)
 }
 

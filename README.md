@@ -219,6 +219,43 @@ const organization: IfSetOrganization = {
 }
 ```
 
+- getServiceById()
+
+```javascript
+
+{
+  serviceProfile: {
+    id: '9ade8de6-ead4-4ce6-8aca-d6a043637513',
+    name: 'service-profile',
+    organizationID: '1',
+    networkServerID: '1',
+    ulRate: 0,
+    ulBucketSize: 0,
+    ulRatePolicy: 'DROP',
+    dlRate: 0,
+    dlBucketSize: 0,
+    dlRatePolicy: 'DROP',
+    addGWMetaData: true,
+    devStatusReqFreq: 0,
+    reportDevStatusBattery: false,
+    reportDevStatusMargin: false,
+    drMin: 0,
+    drMax: 0,
+    channelMask: null,
+    prAllowed: false,
+    hrAllowed: false,
+    raAllowed: false,
+    nwkGeoLoc: false,
+    targetPER: 0,
+    minGWDiversity: 0,
+    gwsPrivate: false
+  },
+  createdAt: '2021-06-15T07:29:49.917213Z',
+  updatedAt: '2021-06-15T07:29:49.917213Z'
+}
+
+```
+
 - getNetworkServers
 
 ```javascript
