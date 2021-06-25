@@ -642,6 +642,12 @@ Should be a server we can connect ,otherwise...
 
 ```
 
+- getDeviceProfileById()
+
+- updateDeviceProfileById()
+
+- deleteDeviceProfileById()
+
 - setDevice
 
 ```javascript

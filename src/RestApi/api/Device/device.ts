@@ -1,4 +1,4 @@
-import { axiosGet, axiosPost } from "../../../http/index.js";
+import { axiosDelete, axiosGet, axiosPost, axiosPut } from "../../../http/index.js";
 import { getDbEnv } from "../../env.js";
 import { IfSetDevice, IfSetDeviceProfile } from "../../interface.js";
 import { strict as assert } from "assert";
@@ -22,6 +22,20 @@ export async function getDeviceProfiles(offset: number, limit: number, orgId?: n
 
     return axiosGet(url)
 }
+export async function getDeviceProfileById(id: string) {
+    let url = getDbEnv().data?.urlBase
+        + '/api/device-profiles'
+        + '/' + id
+    return axiosGet(url)
+}
+export async function updateDeviceProfileById(id: string, option: IfSetDeviceProfile) {
+    let url = getDbEnv().data?.urlBase
+        + '/api/device-profiles'
+        + '/' + id
+    return axiosPut(url, {
+        deviceProfile: option
+    })
+}
 export async function setDeviceProfile(option: IfSetDeviceProfile) {
 
     const url = getDbEnv().data?.urlBase
@@ -31,7 +45,12 @@ export async function setDeviceProfile(option: IfSetDeviceProfile) {
         deviceProfile: option
     })
 }
-
+export async function deleteDeviceProfileById(id: string) {
+    let url = getDbEnv().data?.urlBase
+        + '/api/device-profiles'
+        + '/' + id
+    return axiosDelete(url)
+}
 
 export async function getDevices(offset: number, limit: number, appId?: number, multicastGrpId?: string, serviceProfileId?: string) {
     assert(offset >= 0, "offset >= 0")

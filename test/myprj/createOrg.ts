@@ -1,6 +1,6 @@
 
-import { IfSetGateway, IfSetGatewayProfile, IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
-import { deleteGatewayById, deleteGatewayProfileById, deleteServiceById, getGatewayById, getGatewayProfileById, getGatewayProfiles, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setGateway, setGatewayProfile, setOrganization, setService, updateGatewayById, updateGatewayProfileById, updateServiceById } from "../../src/index.js";
+import { IfSetDeviceProfile, IfSetGateway, IfSetGatewayProfile, IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
+import { deleteGatewayById, deleteGatewayProfileById, deleteServiceById, getDeviceProfileById, getGatewayById, getGatewayProfileById, getGatewayProfiles, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setDeviceProfile, setGateway, setGatewayProfile, setOrganization, setService, updateDeviceProfileById, updateGatewayById, updateGatewayProfileById, updateServiceById } from "../../src/index.js";
 
 async function createOrg() {
     const organization: IfSetOrganization = {
@@ -168,6 +168,85 @@ async function updateGatewayByIdHere(mid: string) {
     let result = await updateGatewayById(mid, gw)
     console.log(result)
 }
+/**
+ * f6981751-4865-4ab4-b413-93b2db99bd49
+ * 122ab120-5c21-48c3-9ee1-fcd21028202a
+ * 87fe776d-2172-4984-b48e-8b600fa05410
+ */
+async function setDeviceProfileHere() {
+    const profile: IfSetDeviceProfile = {
+        adrAlgorithmID: 'default',
+        classBTimeout: 0,
+        classCTimeout: 0,
+        factoryPresetFreqs: [],
+        geolocBufferTTL: 0,
+        geolocMinBufferSize: 0,
+        id: "",
+        macVersion: "1.0.0",
+        maxDutyCycle: 0,
+        maxEIRP: 0,
+        name: "dummydev2",
+        networkServerID: "1",
+        organizationID: "2",
+        payloadCodec: "",
+        payloadDecoderScript: "",
+        payloadEncoderScript: "",
+        pingSlotDR: 0,
+        pingSlotFreq: 0,
+        pingSlotPeriod: 0,
+        regParamsRevision: "A",
+        rfRegion: "",
+        rxDROffset1: 0,
+        rxDataRate2: 0,
+        rxDelay1: 0,
+        rxFreq2: 0,
+        supports32BitFCnt: true,
+        supportsClassB: false,
+        supportsClassC: false,
+        supportsJoin: true,
+        tags: {},
+        uplinkInterval: "60s"
+    }
+    let result = await setDeviceProfile(profile)
+    console.log(result)
+}
+async function updateDeviceProfileByIdHere() {
+    const profile: IfSetDeviceProfile = {
+        adrAlgorithmID: 'default',
+        classBTimeout: 0,
+        classCTimeout: 0,
+        factoryPresetFreqs: [],
+        geolocBufferTTL: 0,
+        geolocMinBufferSize: 0,
+        id: "",
+        macVersion: "1.0.0",
+        maxDutyCycle: 0,
+        maxEIRP: 0,
+        name: "dummydevYang",
+        networkServerID: "1",
+        organizationID: "2",
+        payloadCodec: "",
+        payloadDecoderScript: "",
+        payloadEncoderScript: "",
+        pingSlotDR: 0,
+        pingSlotFreq: 0,
+        pingSlotPeriod: 0,
+        regParamsRevision: "A",
+        rfRegion: "",
+        rxDROffset1: 0,
+        rxDataRate2: 0,
+        rxDelay1: 0,
+        rxFreq2: 0,
+        supports32BitFCnt: true,
+        supportsClassB: false,
+        supportsClassC: false,
+        supportsJoin: true,
+        tags: {},
+        uplinkInterval: "60s"
+    }
+    let result = await updateDeviceProfileById('87fe776d-2172-4984-b48e-8b600fa05410', profile)
+    console.log(result)
+}
 async function main() {
     await init();
 
@@ -205,6 +284,10 @@ async function main() {
     // let result = await deleteGatewayById('5000201090123402')
     // console.log(result)
 
+    // await setDeviceProfileHere()
+    // let result = await getDeviceProfileById('87fe776d-2172-4984-b48e-8b600fa05410')
+    // console.log(result)
+    await updateDeviceProfileByIdHere()
 }
 
 main()
