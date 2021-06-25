@@ -47,3 +47,25 @@ export const axiosGet = async function (url: string): Promise<any> {
         }
     }
 }
+
+
+export const axiosDelete = async function (url: string): Promise<any> {
+    try {
+        console.log('Delete Url:', url)
+        const jwt = await getJwt();
+        let result = await axios.delete(url, {
+            headers: {
+                "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
+                "verify": false
+            }
+        })
+        return result.data
+    } catch (e) {
+        console.log("Data:", e.response.data)
+
+        return {
+            err: e.response.data.code,
+            data: e.response.data.message
+        }
+    }
+}
