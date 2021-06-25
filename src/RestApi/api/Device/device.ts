@@ -1,6 +1,6 @@
 import { axiosDelete, axiosGet, axiosPost, axiosPut } from "../../../http/index.js";
 import { getDbEnv } from "../../env.js";
-import { IfSetDevice, IfSetDeviceProfile } from "../../interface.js";
+import { IfDeviceQueueItem, IfSetDevice, IfSetDeviceProfile } from "../../interface.js";
 import { strict as assert } from "assert";
 
 export async function getDeviceProfiles(offset: number, limit: number, orgId?: number, appId?: number) {
@@ -83,4 +83,67 @@ export async function setDevice(option: IfSetDevice) {
     return axiosPost(url, {
         device: option
     })
+}
+
+export async function getDeviceByEui(eui: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/devices'
+        + '/' + eui
+    return axiosGet(url)
+}
+export async function deleteDeviceByEui(eui: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/devices'
+        + '/' + eui
+    return axiosDelete(url)
+}
+export async function deactivateDeviceByEui(eui: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/devices'
+        + '/' + eui
+        + '/activation'
+    return axiosDelete(url)
+}
+
+export async function getDeviceActivationByEui(eui: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/devices'
+        + '/' + eui
+        + '/activation'
+    return axiosGet(url)
+}
+
+export async function updateDeviceByEui(eui: string, option: IfSetDevice) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/devices'
+        + '/' + eui
+    return axiosPut(url, {
+        device: option
+    })
+}
+
+export async function getDeviceQueueByEui(eui: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/devices'
+        + '/' + eui
+        + '/queue'
+
+    return axiosGet(url)
+}
+export async function enqueueDeviceQueueByEui(eui: string, option: IfDeviceQueueItem) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/devices'
+        + '/' + eui
+        + '/queue'
+
+    return axiosPost(url, {
+        deviceQueueItem: option
+    })
+}
+export async function flushDeviceQueueByEui(eui: string) {
+    const url = getDbEnv().data?.urlBase
+        + '/api/devices'
+        + '/' + eui
+        + '/queue'
+    return axiosDelete(url)
 }

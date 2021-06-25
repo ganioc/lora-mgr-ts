@@ -47,11 +47,11 @@ config/config.json
   - [x] query gateway
 - [x] add an application,
 - [x] add a device profile, device
-  - [] delete device
-  - [] query device
-  - [] update device
-  - [] device status,
-  - [] send to device,
+  - [x] delete device
+  - [x] query device
+  - [x] update device
+  - [x] device status,
+  - [x] send to device, enqueue
 
 1. getApplications
 
@@ -543,6 +543,33 @@ Should be a server we can connect ,otherwise...
 
 - deleteGatewayById()
 
+- getGatewayStats
+
+```javascript
+{
+  error: 'timestamp: nil Timestamp',
+  code: 3,
+  message: 'timestamp: nil Timestamp',
+  details: []
+}
+
+http://192.168.31.159:8080/api/gateways/5000201090123402/stats?interval=DAY&startTimestamp=2021-05-19T08%3A17%3A56.396Z&endTimestamp=2021-06-17T08%3A17%3A56.396Z
+
+// pass
+{"result":[
+  {
+    "timestamp":"2021-05-18T16:00:00Z",
+    "rxPacketsReceived":0,
+    "rxPacketsReceivedOK":0,
+    "txPacketsReceived":0,
+    "txPacketsEmitted":0},
+
+  {"timestamp":"2021-05-19T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},
+
+  {"timestamp":"2021-05-20T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-21T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-22T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-23T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-24T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-25T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-26T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-27T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-28T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-29T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-30T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-31T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-01T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-02T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-03T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-04T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-05T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-06T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-07T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-08T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-09T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-10T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-11T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-12T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-13T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-14T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-15T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-16T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0}]}
+
+```
+
 - setDeviceProfile
 
 ```javascript
@@ -707,32 +734,26 @@ Should be a server we can connect ,otherwise...
 }
 
 
-
 ```
 
-- getGatewayStats
+- getDeviceByEui(eui)
+
+- deleteDeviceByEui
+
+- deactivateDeviceByEui
+
+- getDeviceActivationByEui
+
+- updateDeviceByEui
+
+- getDeviceQueueByEui
 
 ```javascript
-{
-  error: 'timestamp: nil Timestamp',
-  code: 3,
-  message: 'timestamp: nil Timestamp',
-  details: []
-}
 
-http://192.168.31.159:8080/api/gateways/5000201090123402/stats?interval=DAY&startTimestamp=2021-05-19T08%3A17%3A56.396Z&endTimestamp=2021-06-17T08%3A17%3A56.396Z
-
-// pass
-{"result":[
-  {
-    "timestamp":"2021-05-18T16:00:00Z",
-    "rxPacketsReceived":0,
-    "rxPacketsReceivedOK":0,
-    "txPacketsReceived":0,
-    "txPacketsEmitted":0},
-
-  {"timestamp":"2021-05-19T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},
-
-  {"timestamp":"2021-05-20T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-21T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-22T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-23T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-24T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-25T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-26T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-27T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-28T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-29T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-30T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-05-31T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-01T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-02T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-03T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-04T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-05T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-06T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-07T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-08T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-09T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-10T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-11T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-12T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-13T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-14T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-15T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0},{"timestamp":"2021-06-16T16:00:00Z","rxPacketsReceived":0,"rxPacketsReceivedOK":0,"txPacketsReceived":0,"txPacketsEmitted":0}]}
+{ deviceQueueItems: [], totalCount: 0 }
 
 ```
+
+- enqueueDeviceQueueByEui
+
+- flushDeviceQueueByEui

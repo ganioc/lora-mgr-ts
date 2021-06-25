@@ -14,12 +14,9 @@ export async function init() {
     await initRESTful();
 }
 
-export { getApplications } from './RestApi/api/Application/getApplications.js'
-export { setApplication } from './RestApi/api/Application/setApplication.js'
-export { setOrganization } from './RestApi/api/Organization/setOrganization.js'
-export { getOrganizations } from './RestApi/api/Organization/getOrganizations.js'
-export { getOrganizationById } from './RestApi/api/Organization/getOrganizationById.js'
+export { getApplications, getApplicationById, deleteApplicationById, setApplication } from './RestApi/api/Application/application.js'
+export { getOrganizations, getOrganizationById, setOrganization } from './RestApi/api/Organization/organization.js'
 export { setService, getServices, getServiceById, deleteServiceById, updateServiceById } from './RestApi/api/ServiceProfile/service.js'
 export { getNetworkServers, setNetworkServer, getNetworkServerById } from './RestApi/api/Network/server.js'
 export { getGatewayProfiles, setGatewayProfile, updateGatewayProfileById, getGatewayProfileById, deleteGatewayProfileById, getGateways, setGateway, getGatewayStats, getGatewayById, updateGatewayById, deleteGatewayById } from './RestApi/api/Gateway/gateway.js'
-export { getDeviceProfiles, setDeviceProfile, getDeviceProfileById, updateDeviceProfileById, deleteDeviceProfileById, getDevices, setDevice } from './RestApi/api/Device/device.js'
+export { getDeviceProfiles, setDeviceProfile, getDeviceProfileById, updateDeviceProfileById, deleteDeviceProfileById, getDevices, setDevice, getDeviceByEui, deleteDeviceByEui, deactivateDeviceByEui, getDeviceActivationByEui, updateDeviceByEui, getDeviceQueueByEui, enqueueDeviceQueueByEui, flushDeviceQueueByEui } from './RestApi/api/Device/device.js'

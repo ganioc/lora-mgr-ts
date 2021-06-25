@@ -222,3 +222,12 @@ export interface IfSetDevice {
 
 export type IfInterval = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year'
 
+
+export interface IfDeviceQueueItem {
+    confirmed?: false,
+    data: string,
+    devEUI: string,
+    fCnt?: number,
+    fPort: number,
+    //jsonObject: string
+}

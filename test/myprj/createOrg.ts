@@ -1,6 +1,8 @@
 
-import { IfSetDeviceProfile, IfSetGateway, IfSetGatewayProfile, IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
-import { deleteGatewayById, deleteGatewayProfileById, deleteServiceById, getDeviceProfileById, getGatewayById, getGatewayProfileById, getGatewayProfiles, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setDeviceProfile, setGateway, setGatewayProfile, setOrganization, setService, updateDeviceProfileById, updateGatewayById, updateGatewayProfileById, updateServiceById } from "../../src/index.js";
+import { IfDeviceQueueItem, IfSetDeviceProfile, IfSetGateway, IfSetGatewayProfile, IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
+import { deleteGatewayById, deleteGatewayProfileById, deleteServiceById, enqueueDeviceQueueByEui, flushDeviceQueueByEui, getApplications, getDeviceByEui, getDeviceProfileById, getDeviceQueueByEui, getDevices, getGatewayById, getGatewayProfileById, getGatewayProfiles, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setDeviceProfile, setGateway, setGatewayProfile, setOrganization, setService, updateDeviceProfileById, updateGatewayById, updateGatewayProfileById, updateServiceById } from "../../src/index.js";
+
+
 
 async function createOrg() {
     const organization: IfSetOrganization = {
@@ -247,12 +249,25 @@ async function updateDeviceProfileByIdHere() {
     let result = await updateDeviceProfileById('87fe776d-2172-4984-b48e-8b600fa05410', profile)
     console.log(result)
 }
+async function enqueueDeviceHere() {
+    const eui = "60c5a8fffe782f64" // 60c5a8fffe782f64
+    const item: IfDeviceQueueItem = {
+        confirmed: false,
+        data: "AQID",
+        devEUI: eui,
+        fCnt: 0,
+        fPort: 1
+    }
+    let result = await enqueueDeviceQueueByEui(eui, item);
+    console.log(result)
+}
+
 async function main() {
     await init();
 
     // await createOrg();
     // await getOrg(2)
-    await getNW()
+    // await getNW()
 
     // let result = await getNetworkServerById(1)
     // console.log(result)
@@ -287,7 +302,24 @@ async function main() {
     // await setDeviceProfileHere()
     // let result = await getDeviceProfileById('87fe776d-2172-4984-b48e-8b600fa05410')
     // console.log(result)
-    await updateDeviceProfileByIdHere()
+    // await updateDeviceProfileByIdHere()
+
+    let result = await getDevices(0, 10)
+    console.log(result)
+
+    // let result = await getDeviceByEui('60c5a8fffe782da1');
+    // console.log(result)
+
+    let result1 = await getDeviceQueueByEui('60c5a8fffe782f64')
+    console.log(result1)
+
+    // await enqueueDeviceHere();
+
+    // let rtn = await getApplications(0, 10, 1);
+    // console.log(rtn)
+
+    // let ret = await flushDeviceQueueByEui('60c5a8fffe782f64')
+    // console.log(ret)
 }
 
 main()
