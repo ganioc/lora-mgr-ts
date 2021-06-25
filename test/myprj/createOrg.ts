@@ -1,6 +1,6 @@
 
 import { IfSetOrganization, IfSetServiceProfile } from "../../src/RestApi/interface.js";
-import { deleteServiceById, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setOrganization, setService } from "../../src/index.js";
+import { deleteServiceById, getNetworkServerById, getNetworkServers, getOrganizationById, getServiceById, getServices, init, setOrganization, setService, updateServiceById } from "../../src/index.js";
 
 async function createOrg() {
     const organization: IfSetOrganization = {
@@ -53,6 +53,36 @@ async function setServiceHere() {
     let result = await setService(profile);
     console.log(result)
 }
+async function updateServiceHere() {
+    const profile: IfSetServiceProfile = {
+        "addGWMetaData": true,
+        "channelMask": "",
+        "devStatusReqFreq": 0,
+        "dlBucketSize": 0,
+        "dlRate": 0,
+        "dlRatePolicy": "DROP",
+        "drMax": 0,
+        "drMin": 0,
+        "gwsPrivate": false,
+        "hrAllowed": false,
+        "id": "",
+        "minGWDiversity": 0,
+        "name": "service-yang",
+        "networkServerID": "1",
+        "nwkGeoLoc": false,
+        "organizationID": "1",
+        "prAllowed": true,
+        "raAllowed": true,
+        "reportDevStatusBattery": false,
+        "reportDevStatusMargin": false,
+        "targetPER": 0,
+        "ulBucketSize": 0,
+        "ulRate": 0,
+        "ulRatePolicy": "DROP"
+    }
+    let result = await updateServiceById('cc50dd3e-b06b-46ce-8ec4-2aa3ad1bf6b4', profile);
+    console.log(result)
+}
 async function main() {
     await init();
 
@@ -66,11 +96,12 @@ async function main() {
     // let result = await getServices(0, 5, 1);
     // console.log(result)
 
-    // await setServiceHere();
+    // 'cc50dd3e-b06b-46ce-8ec4-2aa3ad1bf6b4'
+    //    await setServiceHere();
     // let result = await getServiceById('543c41a1-58bd-44d4-857e-bb90196c5d52')
     // console.log(result)
 
-
+    // await updateServiceHere()
 
 }
 

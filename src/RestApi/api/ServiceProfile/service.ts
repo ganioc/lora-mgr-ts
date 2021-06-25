@@ -2,7 +2,7 @@ import { axiosGet, axiosPost } from "../../../http/index.js";
 import { getDbEnv } from "../../env.js";
 import { IfSetServiceProfile } from "../../interface.js";
 import { strict as assert } from "assert";
-import { axiosDelete } from "../../../http/axios.js";
+import { axiosDelete, axiosPut } from "../../../http/axios.js";
 
 export async function setService(option: IfSetServiceProfile) {
 
@@ -45,4 +45,12 @@ export async function deleteServiceById(id: string) {
     let url = getDbEnv().data?.urlBase
         + '/api/service-profiles/' + id;
     return axiosDelete(url);
+}
+
+export async function updateServiceById(id: string, option: IfSetServiceProfile) {
+    let url = getDbEnv().data?.urlBase
+        + '/api/service-profiles/' + id;
+    return axiosPut(url, {
+        serviceProfile: option
+    })
 }

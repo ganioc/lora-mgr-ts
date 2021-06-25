@@ -3,11 +3,11 @@ import { getJwt } from '../RestApi/env.js'
 
 axios.defaults.timeout = 10000
 
-export const axiosPost = async function (url: string, data: any): Promise<any> {
+async function axiosWrapper(nameMethod: string, method: any, url: string, data?: any) {
     try {
-        console.log('Post Url:', url)
+        console.log(nameMethod, ' Url:', url)
         const jwt = await getJwt();
-        let result = await axios.post
+        let result = await method
             (url, data, {
                 headers: {
                     "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
@@ -25,47 +25,74 @@ export const axiosPost = async function (url: string, data: any): Promise<any> {
     }
 }
 
-export const axiosGet = async function (url: string): Promise<any> {
-    try {
-        console.log('Get Url:', url)
-        const jwt = await getJwt();
-        let result = await axios.get(url, {
-            headers: {
-                "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
-                "verify": false
-            }
-        })
-        return result.data
-    } catch (e) {
-        // console.log(e)
-        // console.log("config:", e.config)
-        console.log("Data:", e.response.data)
+export const axiosPost = async function (url: string, data: any): Promise<any> {
+    // try {
+    //     console.log('Post Url:', url)
+    //     const jwt = await getJwt();
+    //     let result = await axios.post
+    //         (url, data, {
+    //             headers: {
+    //                 "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
+    //                 "verify": false
+    //             }
+    //         })
+    //     return result.data
+    // } catch (e) {
+    //     console.log("Data:", e.response.data)
 
-        return {
-            err: e.response.data.code,
-            data: e.response.data.message
-        }
-    }
+    //     return {
+    //         err: e.response.data.code,
+    //         data: e.response.data.message
+    //     }
+    // }
+    return axiosWrapper("POST", axios.post, url, data)
+}
+
+export const axiosGet = async function (url: string): Promise<any> {
+    // try {
+    //     console.log('Get Url:', url)
+    //     const jwt = await getJwt();
+    //     let result = await axios.get(url, {
+    //         headers: {
+    //             "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
+    //             "verify": false
+    //         }
+    //     })
+    //     return result.data
+    // } catch (e) {
+    //     console.log("Data:", e.response.data)
+
+    //     return {
+    //         err: e.response.data.code,
+    //         data: e.response.data.message
+    //     }
+    // }
+    return axiosWrapper("GET", axios.get, url);
 }
 
 
 export const axiosDelete = async function (url: string): Promise<any> {
-    try {
-        console.log('Delete Url:', url)
-        const jwt = await getJwt();
-        let result = await axios.delete(url, {
-            headers: {
-                "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
-                "verify": false
-            }
-        })
-        return result.data
-    } catch (e) {
-        console.log("Data:", e.response.data)
+    // try {
+    //     console.log('Delete Url:', url)
+    //     const jwt = await getJwt();
+    //     let result = await axios.delete(url, {
+    //         headers: {
+    //             "Grpc-Metadata-Authorization": 'Bearer ' + jwt,
+    //             "verify": false
+    //         }
+    //     })
+    //     return result.data
+    // } catch (e) {
+    //     console.log("Data:", e.response.data)
 
-        return {
-            err: e.response.data.code,
-            data: e.response.data.message
-        }
-    }
+    //     return {
+    //         err: e.response.data.code,
+    //         data: e.response.data.message
+    //     }
+    // }
+    return axiosWrapper("DELETE", axios.delete, url);
+}
+
+export const axiosPut = async function (url: string, data: any) {
+    return axiosWrapper("PUT", axios.put, url, data);
 }
