@@ -4,7 +4,6 @@ import { init, getApplications, setApplication, setOrganization, getOrganization
 import { expect } from 'chai';
 import { getDbEnv } from '../../src/RestApi/env.js';
 
-
 describe('Test all', async () => {
     // 
     describe('Test Init', async () => {
